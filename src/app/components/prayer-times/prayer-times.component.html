@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>مواقيت الصلاة</h2>
+  
+  <input [(ngModel)]="cityName" placeholder="أدخل اسم المدينة" class="input-box" />
+
+  <button (click)="searchPrayerTimes()" class="search-btn">🔍 بحث</button>
+
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <div *ngIf="prayerTimes">
+    <h3>📍 المدينة: {{ cityName }} - {{ country }}</h3>
+    <p>🌍 الإحداثيات: <strong>({{ latitude }}, {{ longitude }})</strong></p>
+
+    <table>
+      <tr>
+        <th> الصلاة</th>
+        <th> الوقت</th>
+      </tr>
+      <tr *ngFor="let prayer of prayerTimes | keyvalue">
+        <td>{{ prayer.key }}</td>
+        <td>{{ prayer.value }}</td>
+      </tr>
+    </table>
+  </div>
+</div>
